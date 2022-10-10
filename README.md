@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @marijndegen
-- 👀 I’m interested in gaming, coding, my friends and my wonderfull [girlfriend](https://cee-jay.nl)
+- 👀 I’m interested in gaming, coding, my friends, solving rubix cubes and parachuting.
 - 🌱 I currently did a research project with deeplearning (AI), also diving deeper into advanced web programming with C#. 
 - 💞️ If you have any cool code I should check, let me know :D
 - 📫 Reach me at marijndegen96@hotmail.com, view [my resume](http://marijndegen.nl)
