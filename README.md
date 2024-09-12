@@ -13,6 +13,7 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.ci commit
 git config --global alias.st status
+git config --global alias.sl "stash list"
 git config --global alias.check "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 git config --global alias.checkOld = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 git config --global alias.checkNoMessageRequired = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
