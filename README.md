@@ -37,9 +37,12 @@ git config in `C:\Users\%USERNAME%\.gitconfig` should look like this:
 	br = branch
 	ci = commit
 	st = status
-	check = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; if [ -z \"$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
+	check = "!sh -c 'dt=$(date +\"%Y-%m-%d %H:%M:%S\"); msg=\"$1\"; [ -z \"$msg\" ] && echo \"Error: No message provided for stash.\" >&2 && exit 1; git stash save -u \"at $dt $msg\" > /dev/null && git stash apply > /dev/null && git add -A > /dev/null && printf \"%0.s#\" {1..45} && echo && echo \"✔️   Game successfully saved! (Powered by github.com/marijndegen)\" && printf \"%0.s#\" {1..45} && echo && git status' -"
 	checkOld = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 	checkNoMessageRequired = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
+	sl = stash list
+	checknew = "!f() { date=\"\\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\\$1\"; if [ -z \"\\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \\${date} \\${message}\" && git stash apply; }; f"
+	dm = diff --cached --find-renames
 
 ```
 
