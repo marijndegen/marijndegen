@@ -15,6 +15,11 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.sl "stash list"
 git config --global alias.check "!f() { date=\"\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\$1\"; if [ -z \"\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \${date} \${message}\" > /dev/null && git stash apply > /dev/null && git add -A > /dev/null && printf '%0.s#' {1..45} && echo && echo '✔️   Game successfully saved! (Powered by github.com/marijndegen)' && printf '%0.s#' {1..45} && echo && git status; }; f
+git config --global alias.dm "diff --cached --find-renames"
+```
+
+Here for historical purposes:
+```
 git config --global alias.checkOld2 "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 git config --global alias.checkOld1 = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 git config --global alias.checkNoMessageRequired = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
