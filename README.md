@@ -24,8 +24,6 @@ Configure git aliasses (tested in powershell)
 	sl = !git --no-pager stash list
 	dm = diff -C HEAD^^ HEAD
 
-	# Other ways of doing the check
-
 	
 ```
 
