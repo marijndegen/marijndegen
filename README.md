@@ -6,17 +6,29 @@
 
 **Note to self (and others) when recieving a new laptop**
 
-Configure git aliasses (in windows cmd):
+Configure git aliasses (tested in powershell) 
 
-```cmd
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.st status
-git config --global alias.sl "stash list"
-git config --global alias.check "!f() { date=\"\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\$1\"; if [ -z \"\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \${date} \${message}\" > /dev/null && git stash apply > /dev/null && git add -A > /dev/null && printf '%0.s#' {1..45} && echo && echo '✔️   Game successfully saved! (Powered by github.com/marijndegen)' && printf '%0.s#' {1..45} && echo && git status; }; f
-REM When changes are staged (git add -A) and move diffs are picked up, view these diffs by: 
-git config --global alias.dm "diff --cached --find-renames"
+1. Open with:
+
+`code %USERPROFILE%\.gitconfig`
+
+2. put this at the end of .gitconfig:
+
+```
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	check = "!sh -c 'dt=$(date +\"%Y-%m-%d %H:%M:%S\"); msg=\"$1\"; [ -z \"$msg\" ] && echo \"Error: No message provided for stash.\" >&2 && exit 1; git stash save -u \"at $dt $msg\" > /dev/null && git stash apply > /dev/null && git add -A > /dev/null && printf \"%0.s#\" {1..45} && echo && echo \"✔️   Game successfully saved! (Powered by github.com/marijndegen)\" && printf \"%0.s#\" {1..45} && echo && git status' -"
+	sl = !git --no-pager stash list
+	dm = diff -C HEAD^^ HEAD
+
+	# Other ways of doing the check
+	checknew = "!f() { date=\"\\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\\$1\"; if [ -z \"\\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \\${date} \\${message}\" && git stash apply; }; f"
+	checkOld = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
+	checkNoMessageRequired = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
+	
 ```
 
 Here for historical purposes:
