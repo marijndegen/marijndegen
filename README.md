@@ -25,13 +25,18 @@ Configure git aliasses (tested in powershell)
 	dm = diff -C HEAD^^ HEAD
 
 	# Other ways of doing the check
-	checknew = "!f() { date=\"\\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\\$1\"; if [ -z \"\\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \\${date} \\${message}\" && git stash apply; }; f"
-	checkOld = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
-	checkNoMessageRequired = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
+
 	
 ```
 
 Here for historical purposes:
+```cmd
+[alias]
+	checknew = "!f() { date=\"\\$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"\\$1\"; if [ -z \"\\$message\" ]; then echo 'Error: No message provided for stash.' >&2; exit 1; fi; git stash save -u \"at \\${date} \\${message}\" && git stash apply; }; f"
+	checkOld = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
+	checkNoMessageRequired2 = "!f() { date=\"$(date +'%Y-%m-%d %H:%M:%S')\"; message=\"$1\"; git stash save -u \"at ${date} ${message}\" && git stash apply; }; f"
+```
+
 ```cmd
 git config --global alias.checkOld2 "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
 git config --global alias.checkOld1 = "!sh -c 'git stash save -u '\"$1\"' && git stash apply' #"
