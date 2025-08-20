@@ -61,6 +61,9 @@ git config in `C:\Users\%USERNAME%\.gitconfig` should look like this:
 
 ```
 
+To make a tag in Git in cmd locally and push it to server:
+> git tag vX.Y.Z -m 'short PR description' && git push origin vX.Y.Z
+
 <!---
 marijndegen/marijndegen is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
